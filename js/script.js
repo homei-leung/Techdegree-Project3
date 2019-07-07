@@ -149,10 +149,10 @@ $("#payment").change(function(){
 
 /***
 Form Validation and Validation Messages.
+Name Validation - cannot be blank.
+Email Validation - formatted like "dave@teamtreehouse.com"
+Credit Card Validation: CCN - 13-16 digit num, Zip Code - 5 digit num, CVV - 3 digit num
 ***/
-//Name Validation - cannot be blank.
-//Email Validation - formatted like "dave@teamtreehouse.com"
-//Credit Card Validation: CCN - 13-16 digit num, Zip Code - 5 digit num, CVV - 3 digit num
 
 function validate(input, regex){
   if(regex.test(input.val()) === false){
