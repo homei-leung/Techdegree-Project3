@@ -129,6 +129,8 @@ Do the same with PayPal and BitCoin options.
 $("#payment").find("option:eq(0)").hide();
 $("#credit-card").next().attr('id', 'paypal');
 $("#credit-card").next().next().attr('id', 'bitcoin');
+$("#paypal").children().hide();
+$("#bitcoin").children().hide();
 $("#payment").change(function(){
   if($(this).val() == 'credit card'){
     $("#credit-card").children().show();
