@@ -162,7 +162,7 @@ function validate(input, regex){
   }
   else{
     input.removeClass('error');
-    $('.invalid').remove();
+    input.remove('p');
     return true;
   }
 };
@@ -197,6 +197,7 @@ function validateAct(){
 
 // Click event listener that validates all fields.
 $("button").click((e) =>{
+  $('.invalid').remove();
   let nameVal = validate($("#name"), nameR);
   let mailVal = validate($("#mail"), emailR);
   let actVal = validateAct();
