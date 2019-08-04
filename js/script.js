@@ -126,7 +126,7 @@ Hide the "Select Payment Method" option in drop down menu.
 Get value of payment select element. If equal to "credit card", set show CC payment form, hide others.
 Do the same with PayPal and BitCoin options.
 ***/
-$("#payment").find("option:eq(0)").hide();
+$("#payment").find("option:eq(0)").remove();
 $("#credit-card").next().attr('id', 'paypal');
 $("#credit-card").next().next().attr('id', 'bitcoin');
 $("#paypal").children().hide();
@@ -198,28 +198,21 @@ function validateAct(){
 };
 
 // Click event listener that validates all fields.
-$("button").click((e) =>{
+$("form").submit(function(e){
   $('.invalid').remove();
   let nameVal = validate($("#name"), nameR);
   let mailVal = validate($("#mail"), emailR);
   let actVal = validateAct();
-  let ccVal = validate($("#cc-num"), ccR);
-  let zipVal = validate($("#zip"), zipR);
-  let cvvVal = validate($("#cvv"), cvvR);
+  if(!nameVal || !mailVal || !actVal){
+    e.preventDefault();
+  }
   if($('#payment').val() == 'credit card'){
-    if(nameVal && mailVal && actVal && ccVal && zipVal && cvvVal){
-      $('form').submit();
-    }
-    else{
+    let ccVal = validate($("#cc-num"), ccR);
+    let zipVal = validate($("#zip"), zipR);
+    let cvvVal = validate($("#cvv"), cvvR);
+    if(!ccVal || !zipVal || !cvvVal){
       e.preventDefault();
     }
   }
-  else{
-    if(nameVal && mailVal && actVal){
-      $('form').submit();
-    }
-    else{
-      e.preventDefault();
-    }
-  }
+
 });
