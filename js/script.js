@@ -197,7 +197,7 @@ function validateAct(){
   }
 };
 
-// Click event listener that validates all fields.
+// Submit event listener that validates all fields.
 $("form").submit(function(e){
   $('.invalid').remove();
   let nameVal = validate($("#name"), nameR);
