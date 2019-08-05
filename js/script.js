@@ -191,9 +191,11 @@ function validateAct(){
   })
   if (numChecked == 0) {
     $(".activities p").last().show();
+    return false;
   }
   else{
     $(".activities p").last().hide();
+    return true;
   }
 };
 
